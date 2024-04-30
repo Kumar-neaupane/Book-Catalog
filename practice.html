@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Form</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <style>
+    /*contact*/
+.contact-left{
+    flex-basis: 35%;
+}
+.contact-right{
+    flex-basis: 60%;
+}
+.contact-left p{
+    margin-top: 30px;
+    color: aliceblue;
+}
+.contact-left p i{
+    color: #ff004f;
+    margin-right: 15px;
+    font-size: 25px;
+}
+.social-icons{
+    margin-top: 30px;
+}
+.social-icons a{
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: #dfe6e9;
+    display: inline-block;
+    transition: transform 0.5s;
+}
+.social-icons a:hover{
+    color: #ff004f;
+    transform: translateY(-5);
+}
+.btn.btn2{
+    display: inline-block;
+    background: #ff004f;
+}
+.contact-right form{
+    width: 100%;
+}
+.contact-right form textarea{
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #262626;
+    padding: 15px;
+    margin: 15px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 6px;
+}
+form.btn2{
+    padding: 14px 60px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.copyright{
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+    background: #000102;
+    font-weight: 300;
+    margin-top: 20px;
+    color: white;
+}
+
+  </style>
+
+  <div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa-regular fa-envelope"></i> kumarneupane123456@gmail.com</p>
+                <p><i class="fa-solid fa-phone-volume"></i> 9818041863</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=100077754874916"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/kumar__neupane?igsh=dmpmNHYxY3hkYTZ6"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/kumarneupane?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fa-brands fa-linkedin"></i></a>
+
+                </div>
+                
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Enter your name" required>
+                    <input type="email" name="Email" placeholder="Enter your email" required>
+                    <textarea name="Message" rows="6" placeholder="Enter your message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>Copyright © [2024] Kumar Neupane. All Rights Reserved.
+        </p>
+    </div>
+</div>
+
+
+
+</body>
+</html>
+
+
+
