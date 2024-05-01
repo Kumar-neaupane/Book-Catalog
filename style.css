@@ -82,7 +82,7 @@ nav ul li a:hover::after {
     color:#00d2d3;
 }
 .login-container {
-    background-color: #fff;
+    background-color:rgba(255,255,255,0.5);
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(233, 221, 221, 0.1);
     padding: 20px;
