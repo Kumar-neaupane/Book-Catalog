@@ -1,3 +1,37 @@
+<?php 
+include 'connection.php';
+$login_message = ""; 
+
+if (isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $email_search = "SELECT * FROM adminlogin WHERE email = '$email'";
+    $query = mysqli_query($conn, $email_search);
+    $email_count = mysqli_num_rows($query);
+    
+    if ($email_count) {
+        $email_pass = mysqli_fetch_assoc($query);
+        $db_pass = $email_pass["password"];
+        
+        // Compare the entered password with the one stored in the database
+        if ($password == $db_pass) {
+            $login_message = "Login successful";
+            // Redirect to admin interface
+            ?>
+            <script>
+                location.replace("admininterface.php");
+            </script>
+            <?php
+            exit; // Stop further execution to prevent displaying the login form again
+        } else {
+            $login_message = "Wrong Password"; 
+        }
+    } else {
+        $login_message = "Invalid email"; 
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +39,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        setTimeout(function(){
+            document.getElementById('login_message').innerHTML = '';
+        }, 3000); 
+    </script>
 </head>
 <body>
     <style>
@@ -60,20 +99,16 @@ button:hover {
 }
 
     </style>
-    <div class="login-container">
+     <div class="login-container">
         <h2>Admin Login</h2>
         <form action="#" method="post">
             <input type="email" id="username" placeholder="Email" name="email" required>
             <input type="password" id="password" placeholder="Password" name="password" required>
-            <button type="submit" name="submit">Login</button>
+            <button type="submit" name="submit">Login</button><br><br>
         </form>
-    </div>
-    <?php
-    include 'connection.php';
-    if(isset($_POST['submit'])){
+        <p id="login_message"><?php echo $login_message; ?></p> 
         
-    }
-
-    ?>
+    </div>
+    
 </body>
 </html>

@@ -1,3 +1,36 @@
+<?php 
+include 'connection.php';
+$login_message = ""; 
+
+if (isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $email_search = "select * from usersignup where email = '$email'";
+    $query = mysqli_query($conn,$email_search);
+    $email_count = mysqli_num_rows($query);
+    
+    if($email_count){
+        $email_pass = mysqli_fetch_assoc($query);
+        $db_pass = $email_pass["password"];
+        $pass_decode = password_verify($password, $db_pass);
+        
+        if($pass_decode){
+            $login_message = "Login successful";
+            ?>
+            <script>
+                location.replace("userinterface.php");
+            </script>
+            <?php
+        } else {
+            $login_message = "Wrong Password"; 
+        }
+    } else {
+        $login_message = "Invalid email"; 
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +40,15 @@
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
     <title>Book Catalog System</title>
     <script src="https://kit.fontawesome.com/d21d709eb4.js" crossorigin="anonymous"></script>
+    <script>
+        setTimeout(function(){
+            document.getElementById('login_message').innerHTML = '';
+        }, 3000); 
+    </script>
 </head>
 <body>
+
+
     <div id="header">
         <div class="container">
             <nav>
@@ -17,7 +57,7 @@
                     <li><a href="#header">Home</a></li>
                     <li><a href="#userlogin">User Login</a></li>
                     <li><a href="signup.html">User Signup</a></li>
-                    <li><a href="adminlogin.html">Admin Login</a></li>
+                    <li><a href="adminlogin.php">Admin Login</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                     <!---<i class="fa-solid fa-xmark" onclick="closemenu()"></i>
@@ -32,14 +72,15 @@
 
         </div>
         <div class="login-container">
-            <h2>User Login</h2>
-            <form action="#" method="post">
-                <input type="email" id="username" placeholder="Email" name="email" required>
-                <input type="password" id="password" placeholder="Password" name="password" required>
-                <button type="submit" name="submit">Login</button><br><br>
-            </form>
-            <p> Don't have an account?<a href="adminlogin.html">Signup</a></p>
-        </div>
+        <h2>User Login</h2>
+        <form action="#" method="post">
+            <input type="email" id="username" placeholder="Email" name="email" required>
+            <input type="password" id="password" placeholder="Password" name="password" required>
+            <button type="submit" name="submit">Login</button><br><br>
+        </form>
+        <p id="login_message"><?php echo $login_message; ?></p> 
+        <p> Don't have an account?<a href="signup.php">Signup</a></p>
+    </div>
         
     </div>
     
