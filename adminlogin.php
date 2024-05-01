@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
-    
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <style>
         body {
     font-family: Arial, sans-serif;
-    background-color: #222f3e;
+    background-color: #f1f1f1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +18,7 @@
     margin: 0;
 }
 
-.signup-container {
+.login-container {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -59,31 +59,21 @@ button:hover {
     background-color: #0056b3;
 }
 
-p {
-    margin-top: 20px;
-}
-
-a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
     </style>
-    <div class="signup-container">
-        <h2>Sign Up</h2>
-        <form action="#">
-            <input type="text" id="name" placeholder="Name" name="name" required>
-            <input type="text" id="student-id" placeholder="Student ID" name="student_id" required>
-            <input type="email" id="email" placeholder="Email" name="email" required>
+    <div class="login-container">
+        <h2>Admin Login</h2>
+        <form action="#" method="post">
+            <input type="email" id="username" placeholder="Email" name="email" required>
             <input type="password" id="password" placeholder="Password" name="password" required>
-            <input type="password" id="confirm-password" placeholder="Confirm Password" name="confirm_password" required>
-            <button type="submit" name="submit">Sign Up</button>
+            <button type="submit" name="submit">Login</button>
         </form>
-        <p>Already have an account? <a href="#">Login</a></p>
     </div>
+    <?php
+    include 'connection.php';
+    if(isset($_POST['submit'])){
+        
+    }
+
+    ?>
 </body>
 </html>

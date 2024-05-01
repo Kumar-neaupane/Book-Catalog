@@ -161,7 +161,7 @@ nav ul li a:hover::after {
     width: 100%;
     border: 0;
     outline: none;
-    background: #262626;
+    background: #faf9f9;
     padding: 15px;
     margin: 15px 0;
     color: #fff;
