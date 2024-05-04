@@ -1,0 +1,86 @@
+.tabcontent {
+    display: none;
+}
+
+.active {
+    background-color:#0984e3;
+}
+
+.tabs {
+    padding: 20px;
+   margin: 3px;
+   border-radius: 5px;
+    overflow: hidden;
+    background-color:#0984e3;
+}
+
+.tablink {
+    float: left;
+    border: 1px solid #ccc;
+    background-color: inherit;
+    color: black;
+    padding: 10px 20px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.tablink:hover {
+    background-color: #ddd;
+}
+/* add book*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+.form-group input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.form-group input[type="submit"]:hover {
+    background-color: #45a049;
+}

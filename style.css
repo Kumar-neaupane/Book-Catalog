@@ -15,7 +15,7 @@ body {
 #header {
     width: 100%;
     height: 100vh;
-    background-image: url(hb.jpg);
+    background-image: url(bg1.jpg);
     background-size: cover;
     background-position: center;
     padding-bottom: 20px;
@@ -43,7 +43,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #f5f6fa;
+    color: #fdcb6e;
     text-decoration: none;
     font-size: 18px;
     position: relative;

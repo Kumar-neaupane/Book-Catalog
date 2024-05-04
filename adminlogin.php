@@ -13,16 +13,16 @@ if (isset($_POST['submit'])) {
         $email_pass = mysqli_fetch_assoc($query);
         $db_pass = $email_pass["password"];
         
-        // Compare the entered password with the one stored in the database
+        
         if ($password == $db_pass) {
             $login_message = "Login successful";
-            // Redirect to admin interface
+           
             ?>
             <script>
                 location.replace("admininterface.php");
             </script>
             <?php
-            exit; // Stop further execution to prevent displaying the login form again
+            exit; 
         } else {
             $login_message = "Wrong Password"; 
         }

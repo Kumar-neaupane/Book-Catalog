@@ -56,7 +56,7 @@ if (isset($_POST['submit'])) {
                 <ul id="sidemenu">
                     <li><a href="#header">Home</a></li>
                     <li><a href="#userlogin">User Login</a></li>
-                    <li><a href="signup.html">User Signup</a></li>
+                    <li><a href="signup.php">User Signup</a></li>
                     <li><a href="adminlogin.php">Admin Login</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -71,9 +71,9 @@ if (isset($_POST['submit'])) {
             </div>
 
         </div>
-        <div class="login-container">
+        <div class="login-container" id = "userlogin">
         <h2>User Login</h2>
-        <form action="#" method="post">
+        <form action="#" method="post" >
             <input type="email" id="username" placeholder="Email" name="email" required>
             <input type="password" id="password" placeholder="Password" name="password" required>
             <button type="submit" name="submit">Login</button><br><br>

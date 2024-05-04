@@ -84,44 +84,49 @@ a:hover {
         <input type="password" id="confirm-password" placeholder="Confirm Password" name="confirm_password" required>
         <button type="submit" name="submit">Sign Up</button>
     </form>
-    <p>Already have an account? <a href="#">Login</a></p>
+    <p>Already have an account? <a href="#userlogin">Login</a></p>
     <div>
-        <?php
-        include 'connection.php';
+    <?php
+include 'connection.php';
 
-        if(isset($_POST['submit'])){
-            $name = mysqli_real_escape_string($conn, $_POST['name']);
-            $student_id = mysqli_real_escape_string($conn, $_POST['student_id']);
-            $email = mysqli_real_escape_string($conn, $_POST['email']);
-            $password = mysqli_real_escape_string($conn, $_POST['password']);
-            $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
-            $pass = password_hash($password, PASSWORD_BCRYPT);
-            $confirmpassword = password_hash($confirm_password, PASSWORD_BCRYPT);
-            $emailquery = "select * from usersignup where email = '$email'";
-            $query = mysqli_query($conn, $emailquery);
-            $emailcount = mysqli_num_rows($query);
-            if($emailcount > 0){
-                echo "<div id='email-exists-message'>Email already exists</div>";
+if(isset($_POST['submit'])){
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $student_id = mysqli_real_escape_string($conn, $_POST['student_id']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
+    $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
+    $pass = password_hash($password, PASSWORD_BCRYPT);
+    $confirmpassword = password_hash($confirm_password, PASSWORD_BCRYPT);
+    $emailquery = "select * from usersignup where email = '$email'";
+    $query = mysqli_query($conn, $emailquery);
+    $emailcount = mysqli_num_rows($query);
+    if($emailcount > 0){
+        echo "<div id='email-exists-message'>Email already exists</div>";
+    } else {
+        if($confirm_password === $confirm_password){
+            $insertquery = "insert into usersignup(name, student_id,email,password,confirm_password ) values('$name', '$student_id','$email','$pass','$confirmpassword')";
+            $iquery = mysqli_query($conn, $insertquery);
+            if($iquery){
+                echo "<div id='signup-success-message'>Successfully signed up</div>";
+                ?>
+                <script>
+                    // Redirect after 5 seconds
+                    setTimeout(function() {
+                        location.replace("index.php");
+                    }, 3000);
+                </script>
+                <?php
             } else {
-                if($confirm_password === $confirm_password){
-                    $insertquery = "insert into usersignup(name, student_id,email,password,confirm_password ) values('$name', '$student_id','$email','$pass','$confirmpassword')";
-                    $iquery = mysqli_query($conn, $insertquery);
-                    if($iquery){
-                        echo "<div id='signup-success-message'>Successfully signed up</div>";
-                    } else {
-                        echo "<div id='signup-failed-message'>Signup Failed</div>";
-                    }
-                } else {
-                    echo "<div id='password-not-matching-message'>Enter Same password</div>";
-                }
+                echo "<div id='signup-failed-message'>Signup Failed</div>";
             }
+        } else {
+            echo "<div id='password-not-matching-message'>Enter Same password</div>";
         }
-        ?>
-    </div>
-</div>
-
+    }
+}
+?>
 <script>
-    
+    // Function to remove messages after 5 seconds
     setTimeout(function(){
         var emailExistsMessage = document.getElementById('email-exists-message');
         var signupSuccessMessage = document.getElementById('signup-success-message');
@@ -140,8 +145,10 @@ a:hover {
         if(passwordNotMatchingMessage) {
             passwordNotMatchingMessage.remove();
         }
-    }, 5000);
+    }, 1000);
 </script>
+
+
 
 </body>
 </html>
