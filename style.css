@@ -209,5 +209,50 @@ form.btn2{
     margin-top: 20px;
     animation: slideIn 1s ease-in-out forwards;
 }
+/* For mobile devices */
+@media only screen and (max-width: 600px) {
+    .container {
+        padding: 10px 5%;
+    }
+    .login-container {
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+    .header-text {
+        margin-top: 10%;
+        font-size: 20px;
+    }
+    .header-text h1 {
+        font-size: 40px;
+        margin-top: 10px;
+    }
+    nav ul li {
+        margin: 5px 10px;
+    }
+}
+
+/* For tablets and larger devices */
+@media only screen and (min-width: 601px) {
+    .container {
+        padding: 10px 10%;
+    }
+    .login-container {
+        width: 300px;
+        float: right;
+        margin-right: 100px;
+    }
+    .header-text {
+        margin-top: 20%;
+        font-size: 30px;
+    }
+    .header-text h1 {
+        font-size: 60px;
+        margin-top: 20px;
+    }
+    nav ul li {
+        margin: 10px 20px;
+    }
+}
 
 

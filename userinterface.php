@@ -1,3 +1,4 @@
 <?php 
-echo "User interface";
+include 'connection.php';
+include 'header.php';
 ?>

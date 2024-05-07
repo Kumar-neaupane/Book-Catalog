@@ -33,6 +33,9 @@ body {
     margin: 0;
     padding: 0;
 }
+.tablink a{
+    text-decoration: none;
+}
 
 .container {
     max-width: 500px;
@@ -83,50 +86,40 @@ h2 {
 .form-group input[type="submit"]:hover {
     background-color: #45a049;
 }
-/* manage books*/
-.container {
-    width: 90%;
-    margin: 0 auto;
+/* manage books */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
 }
-
-.book-table {
+table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
-
-.book-table th, .book-table td {
-    padding: 10px;
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
 }
-
-.book-table th {
+th {
     background-color: #f2f2f2;
-    color: #333;
 }
-
-.book-image {
-    max-width: 100px;
+img {
+    max-width: 80px;
     height: auto;
 }
-
 .edit-btn, .delete-btn {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
     padding: 8px 12px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
-    margin: 2px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
     cursor: pointer;
     border-radius: 4px;
-    transition: background-color 0.3s;
 }
-
 .edit-btn:hover, .delete-btn:hover {
     background-color: #45a049;
 }
-
-

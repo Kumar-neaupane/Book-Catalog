@@ -1,35 +1,43 @@
 <?php
 include 'connection.php';
-$id = $_GET['id'];
-$selectquery = "SELECT * FROM addbook where id = $id";
-                
-$query = mysqli_query($conn, $selectquery);
-$result = mysqli_fetch_assoc($query);
 
-if (isset($_POST['submit'])){
-    $bookname = $_POST['bookname'];
-    $authorname = $_POST['authorname'];
-    $isbn = $_POST['isbn'];
-    $category = $_POST['category'];
-    $file = $_FILES['bookimage'];
 
-    $filename = $file['name'];
-    $filepath = $file['tmp_name'];
-    $fileerror = $file['error'];
+if(isset($_GET['id']) && is_numeric($_GET['id'])) {
+    $id = $_GET['id'];
+
+   
+    $selectquery = "SELECT * FROM addbook WHERE id = $id";
+    $query = mysqli_query($conn, $selectquery);
+    $result = mysqli_fetch_assoc($query);
+
+    if(!$result) {
+        echo "Book not found";
+        exit;
+    }
+
     
-    if($fileerror == 0){
-        $destfile = 'BookImages/'.$filename;
-        move_uploaded_file($filepath, $destfile);
-        $updatequery = "UPDATE addbook SET bookname='$bookname', authorname='$authorname', isbn='$isbn', category='$category', bookimage='$destfile' WHERE id=$id";
-        $query = mysqli_query($conn, $updatequery);
+    if(isset($_POST['submit'])) {
+        $bookname = $_POST['bookname'];
+        $authorname = $_POST['authorname'];
+        $isbn = $_POST['isbn'];
+        $category = $_POST['category'];
 
-        if($query) {
+        // Update the book details
+        $updatequery = "UPDATE addbook SET bookname=?, authorname=?, isbn=?, category=? WHERE id=?";
+        $stmt = mysqli_prepare($conn, $updatequery);
+        mysqli_stmt_bind_param($stmt, "ssssi", $bookname, $authorname, $isbn, $category, $id);
+        $success = mysqli_stmt_execute($stmt);
+
+        if($success) {
             echo "Updated successfully";
             exit;
         } else {
             echo "Error: " . mysqli_error($conn);
         }
     }
+} else {
+    echo "Invalid ID";
+    exit;
 }
 ?>
 
@@ -38,7 +46,7 @@ if (isset($_POST['submit'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="admininterface.css">
+    <link rel="stylesheet" href="edit.css">
     <title>Edit Book</title>
 </head>
 <body>
@@ -47,26 +55,23 @@ if (isset($_POST['submit'])){
         <form action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="bookName">Book Name:</label>
-                <input type="text" id="bookName" name="bookname" value="<?php echo $result['bookname']; ?>" required>
+                <input type="text" id="bookName" name="bookname" value="<?php echo htmlspecialchars($result['bookname']); ?>" required>
             </div>
             <div class="form-group">
                 <label for="authorName">Author Name:</label>
-                <input type="text" id="authorName" name="authorname" value="<?php echo $result['authorname']; ?>" required>
+                <input type="text" id="authorName" name="authorname" value="<?php echo htmlspecialchars($result['authorname']); ?>" required>
             </div>
             <div class="form-group">
                 <label for="ISBN">ISBN:</label>
-                <input type="text" id="ISBN" name="isbn" value="<?php echo $result['isbn']; ?>" required>
+                <input type="text" id="ISBN" name="isbn" value="<?php echo htmlspecialchars($result['isbn']); ?>" required>
             </div>
             <div class="form-group">
                 <label for="category">Category:</label>
-                <input type="text" id="category" name="category" value="<?php echo $result['category']; ?>" required>
+                <input type="text" id="category" name="category" value="<?php echo htmlspecialchars($result['category']); ?>" required>
             </div>
+            
             <div class="form-group">
-                <label for="bookImage">Book Image:</label>
-                <input type="file" id="bookImage" name="bookimage" accept="image/*">
-            </div>
-            <div class="form-group">
-                <input type="submit" name="submit" value="edit">
+                <input type="submit" name="submit" value="Update">
             </div>
         </form>
     </div>

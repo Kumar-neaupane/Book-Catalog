@@ -41,9 +41,9 @@ if (isset($_POST['submit'])){
     <div class="tabs">
         <button class="tablink active" onclick="openTab('add')">Add Books</button>
         <button class="tablink" onclick="openTab('manage')">Manage Books</button>
-        <button class="tablink" onclick="openTab('request')">Issued Request</button>
-        <button class="tablink" onclick="openTab('issued')">Book Issued</button>
-        <button class="tablink" onclick="openTab('logout')">Logout</button>
+        <button class="tablink" onclick="openTab('users')">Users</button>
+        <button class="tablink" onclick="openTab('prequest')">Purchase Request</button>
+        <button class="tablink"  ><a href="index.php">Logout</a></button>
     </div>
 
     <div id="add" class="tabcontent">
@@ -77,23 +77,24 @@ if (isset($_POST['submit'])){
         </div>
     </div>
 
-    <!-- Other tab content goes here -->
+    
     <div id="manage" class="tabcontent">
-    <div class="container">
-        <table class="book-table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Book Name</th>
-                    <th>Author Name</th>
-                    <th>ISBN</th>
-                    <th>Category</th>
-                    <th>Book Image</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
+    <!--<div class="container">-->
+       
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Book Name</th>
+            <th>Author Name</th>
+            <th>ISBN</th>
+            <th>Category</th>
+            <th>Book Image</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
                 <?php
                 $selectquery = "SELECT * FROM addbook";
                 $query = mysqli_query($conn, $selectquery);
@@ -106,26 +107,56 @@ if (isset($_POST['submit'])){
                     <td><?php echo $result['authorname']; ?></td> 
                     <td><?php echo $result['isbn']; ?></td>
                     <td><?php echo $result['category']; ?></td>
-                    <td><img src="<?php echo $result['bookimage']; ?>" alt="Book Image" class="book-image"></td>
-                    <td><a href="edit.php? id= <?php echo $result['id']; ?>"><button class="edit-btn">Edit</button></a></td>
-                    <td><a href=""><button class="delete-btn">Delete</button></a></td>
+                    <td><img src="<?php echo $result['bookimage']; ?>" alt="Book Image" class="book-image" height="100px" width="100px"></td>
+                    <td><a href="edit.php? id= <?php echo $result['id']; ?>"><button class="edit-btn">Update</button></a></td>
+                    <td><a href="delete.php? id= <?php echo $result['id']; ?>"><button class="delete-btn">Delete</button></a></td>
                 </tr>
                 <?php
                 }
                 ?>
             </tbody>
-        </table>
+</table>
     </div>
 </div>
 
-    <div id="request" class="tabcontent">
-        <h3>Issued Request Content</h3>
-        <p>This is the content for issued requests.</p>
+    <div id="users" class="tabcontent">
+    <table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Userid</th>
+            <th>Email</th>
+            
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+                <?php
+                $selectquery = "SELECT * FROM usersignup";
+                $query = mysqli_query($conn, $selectquery);
+
+                while($result = mysqli_fetch_array($query)){
+                ?>
+                <tr>
+                    <td><?php echo $result['id']; ?></td>
+                    <td><?php echo $result['name']; ?></td>
+                    <td><?php echo $result['student_id']; ?></td> 
+                    <td><?php echo $result['email']; ?></td>
+                    
+                    <td><a href="deletuser.php? id= <?php echo $result['id']; ?>"><button class="delete-btn">Delete</button></a></td>
+                </tr>
+                <?php
+                }
+                ?>
+            </tbody>
+</table>
+        
     </div>
 
-    <div id="issued" class="tabcontent">
-        <h3>Book Issued Content</h3>
-        <p>This is the content for issued books.</p>
+    <div id="prequest" class="tabcontent">
+        <h3>Purchase Request Content</h3>
+        <p>This is the content for purchase rquest.</p>
     </div>
 
     <div id="logout" class="tabcontent">
