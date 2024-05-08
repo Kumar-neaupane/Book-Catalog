@@ -13,10 +13,10 @@
             <img src="bookcatalog.png" alt="logo" class="logo">
             <ul id="sidemenu">
                 <li><a href="#header">Home</a></li>
-                <li><a href="Books.php">Books</a></li>
+                <li><a href="books.php">Books</a></li>
                 <li><a href="orders.php">Orders</a></li>
                 <li><a href="about.php">About</a></li>
-                <li><a href="#contact">Logout</a></li>
+                <li><a href="index.php">Logout</a></li>
                 <li class="search-box">
                     <input type="text" placeholder="Search">
                     <button type="submit">Search</button>

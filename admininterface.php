@@ -6,27 +6,40 @@ if (isset($_POST['submit'])){
     $authorname = $_POST['authorname'];
     $isbn = $_POST['isbn'];
     $category = $_POST['category'];
-    $file = $_FILES['bookimage'];
+    $imageFile = $_FILES['bookimage'];
+    $pdfFile = $_FILES['pdffile'];
 
-    $filename = $file['name'];
-    $filepath = $file['tmp_name'];
-    $fileerror = $file['error'];
+    // Image file details
+    $imageFileName = $imageFile['name'];
+    $imageFilePath = $imageFile['tmp_name'];
+    $imageFileError = $imageFile['error'];
+
+    // PDF file details
+    $pdfFileName = $pdfFile['name'];
+    $pdfFilePath = $pdfFile['tmp_name'];
+    $pdfFileError = $pdfFile['error'];
     
-    if($fileerror == 0){
-        $destfile = 'BookImages/'.$filename;
-        move_uploaded_file($filepath, $destfile);
-        $insertquery = "INSERT INTO addbook (bookname, authorname, isbn, category, bookimage) 
-                        VALUES ('$bookname', '$authorname', '$isbn', '$category', '$destfile')";
-        $query = mysqli_query($conn, $insertquery);
+    if($imageFileError == 0 && $pdfFileError == 0){
+        $imageDestFile = 'BookImages/'.$imageFileName;
+        move_uploaded_file($imageFilePath, $imageDestFile);
+
+        $pdfDestFile = 'BookImages/'.$pdfFileName;
+        move_uploaded_file($pdfFilePath, $pdfDestFile);
+
+        $insertQuery = "INSERT INTO addbook (bookname, authorname, isbn, category, bookimage, pdffile) 
+                VALUES ('$bookname', '$authorname', '$isbn', '$category', '$imageDestFile', '$pdfDestFile')";
+
+        $query = mysqli_query($conn, $insertQuery);
 
         if($query) {
-            echo "Book Added succesfully";
+            echo "Book Added successfully";
             exit;
         } else {
             echo "Error: " . mysqli_error($conn);
         }
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -71,11 +84,16 @@ if (isset($_POST['submit'])){
                     <input type="file" id="bookImage" name="bookimage" accept="image/*" required>
                 </div>
                 <div class="form-group">
+    <label for="pdfFile">PDF File:</label>
+    <input type="file" id="pdfFile" name="pdffile" accept=".pdf" required>
+</div>
+                <div class="form-group">
                     <input type="submit" name="submit" value="Add Book">
                 </div>
             </form>
         </div>
     </div>
+
 
     
     <div id="manage" class="tabcontent">
