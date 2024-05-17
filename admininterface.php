@@ -32,6 +32,7 @@ if (isset($_POST['submit'])){
         $query = mysqli_query($conn, $insertQuery);
 
         if($query) {
+            
             echo "Book Added successfully";
             exit;
         } else {

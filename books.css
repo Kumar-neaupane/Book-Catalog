@@ -1,0 +1,154 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2d3436; 
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 40px;
+    margin-top: 0;
+    padding-top: 20px; 
+}
+
+#header {
+    background-size: cover;
+    background-position: center;
+    padding-bottom: 20px;
+}
+
+.container {
+    padding: 10px 10%;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logo {
+    width: 140px;
+}
+
+nav ul {
+    display: flex; 
+    align-items: center; /* Align items vertically */
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+
+nav ul li a {
+    color: #fdcb6e;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+    font-weight: bold;
+}
+
+nav ul li a::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background-color: #0985e300;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+}
+
+nav ul li a:hover::after {
+    width: 100px;
+}
+
+/* New styles for search box */
+.search-box {
+    display: flex; 
+    align-items: center; 
+    margin-left: auto; 
+}
+
+.search-box input[type="text"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    margin-right: 5px;
+}
+
+.search-box button {
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: none;
+    background-color: #fdcb6e;
+    color: #2d3436;
+    cursor: pointer;
+}
+
+.card {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image img {
+    height: 300px;
+    width: 200px;
+    
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.caption {
+    padding: 20px;
+}
+
+.bookname {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.authorname {
+    margin-bottom: 5px;
+}
+
+.isbn, .category {
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.download {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+}
+
+.download:hover {
+    background-color: #0056b3;
+}
+
+/* Media Query to make sure only 3 items per row on smaller screens */
+@media (max-width: 992px) {
+    main {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+}

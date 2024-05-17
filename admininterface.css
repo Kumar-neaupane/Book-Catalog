@@ -1,3 +1,11 @@
+body {
+    font-family: Arial, sans-serif;
+    width: 100%;
+  
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
 .tabcontent {
     display: none;
 }
@@ -8,8 +16,6 @@
 
 .tabs {
     padding: 20px;
-   margin: 3px;
-   border-radius: 5px;
     overflow: hidden;
     background-color:#0984e3;
 }
@@ -27,12 +33,7 @@
 .tablink:hover {
     background-color: #ddd;
 }
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
+
 .tablink a{
     text-decoration: none;
 }

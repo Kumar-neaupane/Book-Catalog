@@ -18,7 +18,7 @@ if (isset($_POST['submit'])) {
             $login_message = "Login successful";
             ?>
             <script>
-                location.replace("userinterface.php");
+                location.replace("home.php");
             </script>
             <?php
         } else {
