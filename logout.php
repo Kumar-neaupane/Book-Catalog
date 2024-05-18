@@ -1,5 +1,11 @@
 <?php
-?>
-<script>location.replace(adminlogin.php)</script>
-<?php
+
+include 'connection.php';
+
+session_start();
+session_unset();
+session_destroy();
+
+header('location:adminlogin.php');
+
 ?>

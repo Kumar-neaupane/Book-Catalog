@@ -15,9 +15,8 @@
                 <li><a href="addbook.php">Add Books</a></li>
                 <li><a href="managebook.php">Manage Books</a></li>
                 <li><a href="user.php">Users</a></li>
-                <li><a href="purchaserequest.php">Purchase Request</a></li>
-                <li><a href="index.php">Logout</a></li>
-               
+                
+                <li><a href="adminlogin.php">Logout</a></li>
             </ul>  
         </nav>           
     </div>                

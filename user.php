@@ -14,9 +14,11 @@
             flex-direction: column;
             min-height: 100vh;
         }
+
         main {
             flex: 1;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -24,18 +26,22 @@
             background-color: #fff;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
+
         th, td {
             border: 1px solid #ddd;
             padding: 12px;
             text-align: left;
         }
+
         th {
             background-color: #f2f2f2;
         }
+
         img {
             max-width: 80px;
             height: auto;
         }
+
         .edit-btn, .delete-btn {
             padding: 8px 12px;
             background-color: #4CAF50;
@@ -44,9 +50,11 @@
             cursor: pointer;
             border-radius: 4px;
         }
+
         .edit-btn:hover, .delete-btn:hover {
             background-color: #45a049;
         }
+
         footer {
             background-color: #007bff;
             color: white;
@@ -60,36 +68,34 @@
     <?php include 'adminheader.php'; ?>
 
     <main>
-        <div id="manage" class="tabcontent">
+        <div id="users" class="tabcontent">
             <table>
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Book Name</th>
-                        <th>Author Name</th>
-                        <th>ISBN</th>
-                        <th>Category</th>
-                        <th>Book Image</th>
-                        <th>Edit</th>
+                        <th>Username</th>
+                        <th>Userid</th>
+                        <th>Email</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $selectquery = "SELECT * FROM addbook";
+                    $selectquery = "SELECT * FROM usersignup";
                     $query = mysqli_query($conn, $selectquery);
 
                     while($result = mysqli_fetch_array($query)){
                     ?>
                     <tr>
                         <td><?php echo $result['id']; ?></td>
-                        <td><?php echo $result['bookname']; ?></td>
-                        <td><?php echo $result['authorname']; ?></td>
-                        <td><?php echo $result['isbn']; ?></td>
-                        <td><?php echo $result['category']; ?></td>
-                        <td><img src="<?php echo $result['bookimage']; ?>" alt="Book Image" class="book-image" height="100px" width="100px"></td>
-                        <td><a href="edit.php?id=<?php echo $result['id']; ?>"><button class="edit-btn">Update</button></a></td>
-                        <td><a href="delete.php?id=<?php echo $result['id']; ?>"><button class="delete-btn">Delete</button></a></td>
+                        <td><?php echo $result['name']; ?></td>
+                        <td><?php echo $result['student_id']; ?></td> 
+                        <td><?php echo $result['email']; ?></td>
+                        <td>
+                            <a href="deletuser.php?id=<?php echo $result['id']; ?>">
+                                <button class="delete-btn">Delete</button>
+                            </a>
+                        </td>
                     </tr>
                     <?php
                     }

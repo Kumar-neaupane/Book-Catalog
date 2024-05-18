@@ -30,6 +30,15 @@ if(isset($_GET['id']) && is_numeric($_GET['id'])) {
 
         if($success) {
             echo "Updated successfully";
+            
+            ?>
+            <script>
+                // Redirect after 3 seconds
+                setTimeout(function() {
+                    location.replace("managebook.php");
+                }, 1000);
+            </script>
+            <?php
             exit;
         } else {
             echo "Error: " . mysqli_error($conn);

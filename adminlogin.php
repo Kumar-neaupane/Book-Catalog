@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
            
             ?>
             <script>
-                location.replace("admininterface.php");
+                location.replace("addbook.php");
             </script>
             <?php
             exit; 
