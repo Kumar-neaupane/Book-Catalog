@@ -12,7 +12,7 @@
     <?php include 'header.php'; ?>
 
     <main>
-        <!-- Your book cards go here -->
+        
         <?php
         $selectquery = "SELECT * FROM addbook";
         $query = mysqli_query($conn, $selectquery);
