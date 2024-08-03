@@ -2,19 +2,21 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="books.css">
+    <link rel="stylesheet" href="search.css">
     <title>Search Results</title>
 </head>
-<body>
-<?php include 'header.php'; ?>
 
-<div class="container">
-     <main>
-    
-    <?php
+<body>
+    <?php include 'header.php'; ?>
+
+    <div class="container">
+        <main>
+
+            <?php
     if (isset($_GET['query'])) {
         $query = $_GET['query'];
         
@@ -34,21 +36,22 @@
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     ?>
-                    <div class="card">
-                        <div class="work">
-                            <div class="image">
-                                <img src="<?php echo htmlspecialchars($row['bookimage']); ?>" alt="img" name="bookimage">
-                            </div>
-                            <div class="caption">
-                                <p class="bookname" name="bookname"><?php echo htmlspecialchars($row['bookname']); ?></p>
-                                <p class="authorname" name="authorname"><?php echo htmlspecialchars($row['authorname']); ?></p>
-                                <p class="isbn" name="isbn"><?php echo htmlspecialchars($row['isbn']); ?></p>
-                                <p class="category" name="category"><?php echo htmlspecialchars($row['category']); ?></p>
-                            </div>
-                            <a href="<?php echo htmlspecialchars($row['pdffile']); ?>" class="download" name="pdffile" download>Download</a>
-                        </div>
+            <div class="card">
+                <div class="work">
+                    <div class="image">
+                        <img src="<?php echo htmlspecialchars($row['bookimage']); ?>" alt="img" name="bookimage">
                     </div>
-                    <?php
+                    <div class="caption">
+                        <p class="bookname" name="bookname"><?php echo htmlspecialchars($row['bookname']); ?></p>
+                        <p class="authorname" name="authorname"><?php echo htmlspecialchars($row['authorname']); ?></p>
+                        <p class="isbn" name="isbn"><?php echo htmlspecialchars($row['isbn']); ?></p>
+                        <p class="category" name="category"><?php echo htmlspecialchars($row['category']); ?></p>
+                    </div>
+                    <a href="<?php echo htmlspecialchars($row['pdffile']); ?>" class="download" name="pdffile"
+                        download>Download</a>
+                </div>
+            </div>
+            <?php
                 }
             } else {
                 echo "<p>No results found for '$query'.</p>";
@@ -62,8 +65,9 @@
         echo "<p>Please enter a search query.</p>";
     }
     ?>
-    </main>
-</div>
+        </main>
+    </div>
 </body>
 <?php include 'footer.php'; ?>
+
 </html>

@@ -35,13 +35,13 @@ if (isset($_POST['submit'])){
             
             echo "Book Added successfully";
             ?>
-            <script>
-                // Redirect after 3 seconds
-                setTimeout(function() {
-                    location.replace("addbook.php");
-                }, 1000);
-            </script>
-            <?php
+<script>
+// Redirect after 3 seconds
+setTimeout(function() {
+    location.replace("managebook.php");
+}, 1000);
+</script>
+<?php
             exit;
         } else {
             echo "Error: " . mysqli_error($conn);
@@ -52,6 +52,7 @@ if (isset($_POST['submit'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,9 +60,10 @@ if (isset($_POST['submit'])){
     <link rel="stylesheet" href="addbook.css">
 </head>
 <?php include 'adminheader.php' ?>
+
 <body>
-  
-<div id="add" class="tabcontent">
+
+    <div id="add" class="tabcontent">
         <div class="containerr">
             <h2>Add Book</h2>
             <form action="" method="post" enctype="multipart/form-data">
@@ -86,9 +88,9 @@ if (isset($_POST['submit'])){
                     <input type="file" id="bookImage" name="bookimage" accept="image/*" required>
                 </div>
                 <div class="form-group">
-    <label for="pdfFile">PDF File:</label>
-    <input type="file" id="pdfFile" name="pdffile" accept=".pdf" required>
-</div>
+                    <label for="pdfFile">PDF File:</label>
+                    <input type="file" id="pdfFile" name="pdffile" accept=".pdf" required>
+                </div>
                 <div class="form-group">
                     <input type="submit" name="submit" value="Add Book">
                 </div>
@@ -96,5 +98,6 @@ if (isset($_POST['submit'])){
         </div>
     </div>
 </body>
+
 </html>
 <?php include 'footer.php'  ?>
