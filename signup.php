@@ -155,11 +155,21 @@
             }, 5000);
 
             function validateForm() {
+                var name = document.getElementById("name").value;
                 var password = document.getElementById("password").value;
                 var confirmPassword = document.getElementById("confirm-password").value;
                 var errorMessage = document.getElementById("error-message");
 
+                var nameRegex = /^[A-Za-z][A-Za-z\s]*$/;
                 var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
+                if (!nameRegex.test(name)) {
+                    errorMessage.textContent = "Name must start with a letter and contain only letters and spaces.";
+                    setTimeout(function() {
+                        errorMessage.textContent = "";
+                    }, 2000);
+                    return false;
+                }
 
                 if (!passwordRegex.test(password)) {
                     errorMessage.textContent =

@@ -29,7 +29,7 @@ location.replace("home.php");
         }
     } else {
         $login_message = "Invalid email"; 
-        $login_message_class = "error"; // Add error class for red color
+        $login_message_class = "error"; 
     }
 }
 ?>
